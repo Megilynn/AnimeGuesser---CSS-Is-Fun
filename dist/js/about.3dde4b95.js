@@ -1,2 +1,0 @@
-"use strict";(self["webpackChunkanime_guesser"]=self["webpackChunkanime_guesser"]||[]).push([[443],{7448:function(e,n,s){s.r(n),s.d(n,{default:function(){return l}});var u=s(3396);const a={class:"about"},r=(0,u._)("h1",null,"This is an about page",-1),t=[r];function i(e,n){return(0,u.wg)(),(0,u.iD)("div",a,t)}var c=s(89);const o={},f=(0,c.Z)(o,[["render",i]]);var l=f}}]);
-//# sourceMappingURL=about.3dde4b95.js.map
