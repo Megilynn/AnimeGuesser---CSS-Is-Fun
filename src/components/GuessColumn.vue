@@ -22,6 +22,8 @@
   <div class='column'>
     <div class='card' :class="popularityColor">
       {{ checkPopularity() }}
+      <FontAwesomeIcon v-if="popArr == 'higher'" class="icon" icon="fa-arrow-up" />
+      <FontAwesomeIcon v-if="popArr == 'lower'" class="icon" icon="fa-arrow-down" />
     </div>
   </div>
   <div class='column'>
@@ -32,6 +34,8 @@
   <div class='column'>
     <div class='card' :class="seasonColor">
       {{ checkSeason() }}
+      <FontAwesomeIcon v-if="seaArr == 'higher'" class="icon" icon="fa-arrow-up" />
+      <FontAwesomeIcon v-if="seaArr == 'lower'" class="icon" icon="fa-arrow-down" />
     </div>
   </div>
   <div class='column'>
@@ -48,6 +52,7 @@
 <script setup lang='ts'>
 import { ref, defineProps, computed } from 'vue';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
+import GuessesTable from './GuessesTable.vue';
 
 const props = defineProps(['guess', 'solution']);
 // console.log('guess', props.guess);
@@ -64,6 +69,8 @@ const seasonColor = ref('');
 const popularityColor = ref('');
 const sourceColor = ref('');
 const seriesColor = ref('');
+const popArr = ref('');
+const seaArr = ref('');
 
 // split genres in half for display
 const genres = computed(() => {
@@ -85,7 +92,13 @@ function checkSeason() {
     }
   } else {
     seasonColor.value = 'red';
+    if (props.guess.seasonYear > props.solution.seasonYear) {
+      seaArr.value = 'lower';
+    } else {
+      seaArr.value = 'higher';
+    }
   }
+
   // eslint-disable-next-line
   const seasonText = props.guess.season + ' ' + props.guess.seasonYear;
   return seasonText;
@@ -97,6 +110,11 @@ function checkPopularity() {
     popularityColor.value = 'green';
   } else {
     popularityColor.value = 'red';
+    if (props.guess.popularity > props.solution.popularity) {
+      popArr.value = 'lower';
+    } else {
+      popArr.value = 'higher';
+    }
   }
   return props.guess.popularity;
 }
@@ -192,9 +210,11 @@ function relatedSeriesCheck() {
   // loop through related series
   for (let i = 0; i < props.guess.relations.nodes.length; i++) {
     // if the related series is the solution
+    // eslint-disable-next-line
     if (props.guess.relations.nodes[i].id === props.solution.id) {
       relatedSeries.value = 'Related';
       seriesColor.value = 'green';
+      return;
     }
   }
   relatedSeries.value = 'Unrelated';
@@ -211,6 +231,7 @@ relatedSeriesCheck();
   align-items: center;
   margin: 0.5rem;
 }
+
 .card {
   min-height: 4rem;
   align-items: center;
@@ -239,7 +260,7 @@ relatedSeriesCheck();
   background: rgba(255, 255, 0, 0.5);
 }
 
-.gameover{
+.gameover {
   background: rgba(128, 128, 128, 0.5);
 }
 </style>

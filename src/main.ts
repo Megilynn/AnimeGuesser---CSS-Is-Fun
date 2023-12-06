@@ -24,6 +24,8 @@ import {
   faBreadSlice,
   faFootball,
   faGhost,
+  faArrowUp,
+  faArrowDown,
 } from '@fortawesome/free-solid-svg-icons';
 
 import App from './App.vue';
@@ -48,6 +50,8 @@ library.add(
   faBreadSlice,
   faFootball,
   faGhost,
+  faArrowDown,
+  faArrowUp,
 );
 
 createApp(App).component('font-awesome-icon', FontAwesomeIcon).use(Oruga, bulmaConfig).use(router)
