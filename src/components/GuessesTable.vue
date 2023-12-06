@@ -24,10 +24,6 @@ import GuessColumn from './GuessColumn.vue';
 const props = defineProps(['guesses', 'selected', 'solution']);
 const listOfGuesses = ref(props.guesses);
 
-console.log('guesses', props.guesses);
-console.log('selected', props.selected);
-console.log('solution', props.solution);
-
 </script>
 <style lang='scss'>
 li {

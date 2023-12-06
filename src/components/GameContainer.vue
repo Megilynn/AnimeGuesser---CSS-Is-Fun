@@ -141,7 +141,6 @@ async function resetGame() {
   selected.value = null;
   const newSolutionId = shows[Math.floor(Math.random() * shows.length)].id;
   await callAnilist(newSolutionId).then((res) => {
-    console.log('sol', res);
     solution = res;
     status.value = 'playing';
   });
