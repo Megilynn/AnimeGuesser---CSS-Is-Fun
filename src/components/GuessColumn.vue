@@ -250,14 +250,17 @@ relatedSeriesCheck();
 
 .red {
   background: rgba(255, 0, 0, 0.5);
+  box-shadow: .25rem .25rem .5rem dimgrey;
 }
 
 .green {
   background: rgba(0, 255, 0, 0.5);
+  box-shadow: .25rem .25rem .5rem dimgrey;
 }
 
 .yellow {
   background: rgba(255, 255, 0, 0.5);
+  box-shadow: .25rem .25rem .5rem dimgrey;
 }
 
 .gameover {
