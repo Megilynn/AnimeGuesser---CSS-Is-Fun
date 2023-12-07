@@ -42,6 +42,7 @@ const props = defineProps(['solution', 'status']);
   }
   .gamecolumn {
     background-color: whitesmoke;
+    box-shadow: .25rem .25rem .5rem black;
     padding-left: 1rem;
     padding-right: 1rem;
     margin-top: 1rem;
